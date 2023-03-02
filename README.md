@@ -7,6 +7,7 @@ CRM은 고객 관계 관리를 의미합니다. CRM 시스템을 사용하면 �
  고객관리와 주문기록 조회 간단 웹 사이트를 만들어 보았습니다.
 
   시작시 환경설정을 블로그에 정리되어 있네요. (기록.. )
-  https://velog.io/@kims_history/Spring-Project
+ 
+https://velog.io/@kims_history/Spring-Project
   
  
