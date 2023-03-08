@@ -59,7 +59,7 @@
   <!-- Main -->
   <main class="et-main">
     <section class="et-slide" id="tab-es6">
-      <h1>ES6</h1>
+      <h1>Hello World!</h1>
       <h3>something about es6</h3>
     </section>
     <section class="et-slide" id="tab-flexbox">
