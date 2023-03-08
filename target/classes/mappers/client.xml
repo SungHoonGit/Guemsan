@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="client">
+
+    <select id="pagelist" resultType="kr.co.guemsan.admin.ClientDTO">
+    <![CDATA[
+    select AA.*
+    FROM(
+		select @RNO := @RNO + 1 as r, CC.*
+		FROM(
+	        SELECT c_code, c_id, c_name, c_gender, c_address, c_address2, c_zip, c_tel, c_smscheck, c_rdate 
+	        FROM client
+	        WHERE c_id = #{c_id}
+	        ORDER BY c_code ASC
+			) CC, (SELECT @RNO := 0) BB ORDER BY c_code DESC
+	    ) AA
+	WHERE r BETWEEN #{startRow} AND #{endRow}
+	ORDER BY c_rdate DESC	        
+	]]>	
+    </select>
+    
+    <select id="list" resultType="kr.co.guemsan.admin.ClientDTO" parameterType="String">
+    <![CDATA[
+        SELECT c_code, c_id, c_name, c_gender, c_address, c_address2, c_zip, c_tel, c_smscheck, c_rdate 
+        FROM client
+        WHERE c_id = #{c_id}
+        ORDER BY c_code ASC
+	]]>	
+    </select>
+    
+        <!-- 검색 -->
+    <select id="pagesearch" resultType="kr.co.guemsan.admin.ClientDTO">
+    <![CDATA[
+    select AA.*
+    FROM(
+		select @RNO := @RNO + 1 as r, CC.*
+		FROM(
+	        SELECT c_code, c_id, c_name, c_gender, c_address, c_address2, c_zip, c_tel, c_smscheck, c_rdate 
+	        FROM client
+	         WHERE ( c_name LIKE CONCAT('%', #{keyword} , '%') || c_tel LIKE CONCAT('%', #{keyword} , '%') ) && c_id = #{c_id}
+	        ORDER BY c_code ASC
+			) CC, (SELECT @RNO := 0) BB ORDER BY c_code DESC
+	    ) AA
+	WHERE r BETWEEN #{startRow} AND #{endRow}
+	ORDER BY c_rdate DESC	        
+	]]>	
+    </select>
+            
+    <select id="search" resultType="kr.co.guemsan.admin.ClientDTO" parameterType="kr.co.guemsan.admin.ClientDTO">
+    <![CDATA[
+        SELECT c_code, c_id, c_name, c_gender, c_address, c_address2, c_zip, c_tel, c_smscheck, c_rdate 
+        FROM client
+        WHERE ( c_name LIKE CONCAT('%', #{keyword} , '%') || c_tel LIKE CONCAT('%', #{keyword} , '%') ) && c_id = #{c_id}
+        ORDER BY c_code ASC
+    ]]>	
+    </select>
+        
+	<select id="pageaddlist" resultType="kr.co.guemsan.admin.addclientDTO">
+	<![CDATA[
+    select AA.*
+    FROM(
+		select @RNO := @RNO + 1 as r, CC.*
+		FROM(	
+        SELECT ac_code, ac_colum, ac_type, ac_content
+        FROM addclient
+        ORDER BY ac_code DESC
+        			) CC, (SELECT @RNO := 0) BB ORDER BY ac_code DESC
+	    ) AA
+	WHERE r BETWEEN #{startRow} AND #{endRow}
+	ORDER BY ac_code DESC	    
+	]]>	
+    </select>
+    
+	<select id="addlist" resultType="kr.co.guemsan.admin.addclientDTO">
+	<![CDATA[
+        SELECT ac_code, ac_colum, ac_type, ac_content
+        FROM addclient
+        ORDER BY ac_code DESC
+	]]>	
+    </select>
+    
+    <insert id="insert" parameterType="kr.co.guemsan.admin.addclientDTO">
+    <![CDATA[
+	    INSERT client( c_code, c_id, c_name, c_gender, c_address, c_address2, c_zip, c_tel, c_smscheck)
+		VALUES ( #{c_code}, #{c_id}, #{c_name}, #{c_gender}, #{c_address}, #{c_address2}, #{c_zip}, #{c_tel}, #{c_smscheck});
+    ]]>	
+    </insert>
+    
+    <select id="cuslistmax" resultType="String" parameterType="String">
+    <![CDATA[
+    	SELECT count(*) 
+        FROM client
+        WHERE c_id = #{c_id}
+    ]]>	
+    </select>
+    
+	<select id="searchmax" resultType="String" parameterType="kr.co.guemsan.admin.ClientDTO">
+    <![CDATA[
+        SELECT count(*) 
+        FROM client
+        WHERE c_name LIKE CONCAT('%', #{keyword} , '%') || c_tel LIKE CONCAT('%', #{keyword} , '%') && c_id = #{c_id}
+    ]]>	
+    </select>
+    
+    <delete id="delclient">
+    	<foreach collection="list" item="item" 	open="" close="" >
+    	<![CDATA[
+    		DELETE FROM addclient
+	        WHERE ac_code = #{item.c_code};
+	        
+       		DELETE FROM record
+	        WHERE r_code = #{item.c_code};
+	           	
+	    	DELETE FROM client
+	        WHERE c_code = #{item.c_code};
+		]]>		        
+    	</foreach>
+    </delete>
+    
+    <select id="clread" resultType="kr.co.guemsan.admin.ClientDTO">
+    <![CDATA[
+        SELECT c_code, c_id, c_name, c_gender, c_address, c_address2, c_zip, c_tel, c_smscheck, c_rdate 
+        FROM client
+        WHERE c_code = #{c_code}
+	]]>	
+    </select>    
+    
+    <update id="update" parameterType="kr.co.guemsan.admin.addclientDTO">
+    <![CDATA[
+	    UPDATE client
+	    SET    c_id 		= #{c_id}
+	    	 , c_name		= #{c_name}
+	    	 , c_gender		= #{c_gender}
+	    	 , c_address	= #{c_address}
+	    	 , c_address2	= #{c_address2}
+	    	 , c_zip		= #{c_zip}
+	    	 , c_tel		= #{c_tel}
+	    	 , c_smscheck	= #{c_smscheck}
+		WHERE c_code = #{c_code}
+    ]]>	
+    </update>
+    
+
+</mapper>
