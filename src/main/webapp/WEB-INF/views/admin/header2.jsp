@@ -29,7 +29,7 @@
 	<link rel="stylesheet" href="/css/admin2.css">
 
 
-<title>천일건재</title>
+<title>SungHoonK</title>
 
 </head>
 

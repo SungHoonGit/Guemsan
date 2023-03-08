@@ -22,7 +22,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="/css/admin.css">
 
-<title>천일건재</title>
+<title>SungHoonK</title>
 </head>
 <body>
 <!-- BS -->
@@ -44,7 +44,7 @@
 			</c:choose>		
 	</div>  
 	  
-    <h1>STICKY SLIDER NAV</h1>
+    <h1>SungHoon kim</h1><br>
     <h3>Sliding content with sticky tab nav</h3>
     <div class="et-hero-tabs-container">
       <a class="et-hero-tab" href="#tab-es6">ES6</a>
