@@ -12,10 +12,10 @@ public class HomeController {
 		System.out.println("---- HomeController()객체 생성됨. ");
 	}// end
 	
-//	@RequestMapping("/")
-//	public ModelAndView home() {
-//		ModelAndView mav = new ModelAndView();
-//		mav.setViewName("redirect:/admin/member");
-//		return mav;
-//	}// home() end
+	@RequestMapping("/")
+	public ModelAndView home() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("/home");
+		return mav;
+	}// home() end
 }// class end

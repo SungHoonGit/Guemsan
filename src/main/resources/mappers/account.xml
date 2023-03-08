@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="account">
+
+    
+	<select id="accountmax" resultType="String" parameterType="kr.co.guemsan.admin.RecordDTO">
+    <![CDATA[
+        SELECT count(*) 
+        FROM record left join client on record.r_code = client.c_code
+        WHERE client.c_name LIKE CONCAT('%', #{keyword} , '%') || client.c_tel LIKE CONCAT('%', #{keyword} , '%') && record.r_id = #{r_id}
+    ]]>	
+    </select>
+
+    <!-- 검색 -->
+    <select id="accountsearch" resultType="kr.co.guemsan.admin.RecordDTO">
+    <![CDATA[
+    select AA.*
+    FROM(
+		select @RNO := @RNO + 1 as r, CC.*
+		FROM(
+	        SELECT * 
+	        FROM record left join client on record.r_code = client.c_code
+	         WHERE ( client.c_name LIKE CONCAT('%', #{keyword} , '%') || client.c_tel LIKE CONCAT('%', #{keyword} , '%') ) && record.r_id = #{r_id}
+	        ORDER BY client.c_rdate DESC
+			) CC, (SELECT @RNO := 0) BB ORDER BY c_code DESC
+	    ) AA
+	WHERE r BETWEEN #{startRow} AND #{endRow}
+	ORDER BY c_rdate DESC	        
+	]]>	
+    </select>    
+    
+    <select id="search" resultType="kr.co.guemsan.admin.RecordDTO" parameterType="kr.co.guemsan.admin.RecordDTO">
+    <![CDATA[
+        SELECT * 
+        FROM record left join client on record.r_code = client.c_code
+        WHERE ( client.c_name LIKE CONCAT('%', #{keyword} , '%') || client.c_tel LIKE CONCAT('%', #{keyword} , '%') ) && record.r_id = #{r_id}
+        ORDER BY client.c_code ASC
+    ]]>	
+    </select>    
+    
+    <delete id="delaccount">
+    	<foreach collection="list" item="item" 	open="" close="" >
+    	<![CDATA[	        
+       		DELETE FROM record
+	        WHERE r_acode = #{item.r_acode};
+		]]>		        
+    	</foreach>
+    </delete>    
+    
+    <insert id="alinsert" parameterType="kr.co.guemsan.admin.RecordDTO">
+    <![CDATA[
+	    INSERT record( r_acode, r_id, r_code, r_deli, r_title, r_total)
+		VALUES ( #{r_acode}, #{r_id}, #{r_code}, #{r_deli}, #{r_title}, #{r_total});
+    ]]>	
+    </insert>    
+
+    <select id="acread" resultType="kr.co.guemsan.admin.RecordDTO">
+    <![CDATA[
+        SELECT *
+        FROM record left join client on record.r_code = client.c_code
+        WHERE r_acode = #{r_acode}
+	]]>	
+    </select>    
+        
+    <update id="recoupdate" parameterType="kr.co.guemsan.admin.RecordDTO">
+    <![CDATA[
+	    UPDATE record
+	    SET    r_id 		= #{r_id}
+	    	 , r_code 		= #{r_code}
+	    	 , r_deli		= #{r_deli}
+	    	 , r_title		= #{r_title}
+	    	 , r_total		= #{r_total}
+		WHERE r_acode		= #{r_acode}
+    ]]>	
+    </update>
+    
+    <update id="payed" parameterType="kr.co.guemsan.admin.RecordDTO">
+    <![CDATA[
+	    UPDATE record
+	    SET    r_pdate 		=  now()
+	    	 , r_pay		= 'O'
+	    	 , r_dpay		= #{r_dpay}
+		WHERE r_acode		= #{r_acode}
+    ]]>	
+    </update>    
+
+    <update id="depayed" parameterType="kr.co.guemsan.admin.RecordDTO">
+    <![CDATA[
+	    UPDATE record
+	    SET    r_pdate 		=  null
+	    	 , r_pay		= 'X'
+	    	 , r_dpay		= '0'
+		WHERE r_acode		= #{r_acode}
+    ]]>	
+    </update>        
+    
+    <select id="aclist" resultType="kr.co.guemsan.admin.RecordDTO" parameterType="String">
+    <![CDATA[
+        SELECT * 
+        FROM record join client on record.r_code = client.c_code
+        WHERE record.r_id = #{r_id}
+        ORDER BY record.r_ordate DESC
+	]]>	
+    </select>
+</mapper>
