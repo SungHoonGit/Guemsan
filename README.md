@@ -15,13 +15,16 @@ CRM은 고객 관계 관리를 의미합니다. CRM 시스템을 사용하면 �
 id : webmaster 
 pw : 12341234 
  
- 
-주문 등록시/ 회원에서 조회 후 등록 
+
+ 주문 삭제시/ 전체적으로 삭제
+
 https://user-images.githubusercontent.com/110158529/224958053-6871b432-65fa-4968-8f55-f24d4b2886a1.mov
 
-주문 삭제시/ 전체적으로 삭제
+ 
+
 https://user-images.githubusercontent.com/110158529/224957147-09268d85-a1a2-48e6-97d2-945f788ffd14.mov
 
+ 주문 등록시/ 회원에서 조회 후 등록 
 
 https://user-images.githubusercontent.com/110158529/224957709-7a6ecb63-465e-40f9-9a8c-bb37812cf072.mov
 
