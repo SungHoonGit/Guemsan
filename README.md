@@ -23,22 +23,25 @@ pw : 12341234
  
  <img width="274" alt="스크린샷 2023-03-14 오후 6 55 30" src="https://user-images.githubusercontent.com/110158529/224964018-8ce642ea-747d-441d-aeae-cced5ff3ad05.png">
 
+<h2> 주요 기능 </h2>
 
- 주문 등록시/ 회원에서 조회 후 등록.
+<h3> 주문 등록시/ 회원에서 조회 후 등록.</h3>
+![searchcust](https://user-images.githubusercontent.com/110158529/226576786-ecb33085-2e2d-451f-b8ea-a8bccdc06601.png)
 
-https://user-images.githubusercontent.com/110158529/224957709-7a6ecb63-465e-40f9-9a8c-bb37812cf072.mov
+https://user-images.githubusercontent.com/110158529/224957709-7a6ecb63-465e-40f9-9a8c-bb37812cf072.mov<br>
  
- 주문 수정하기.
+<h3>주문 수정하기.</h3>
+![readupdate](https://user-images.githubusercontent.com/110158529/226576860-e1058076-7aef-4227-8f42-4d2cbbce688a.png)
 
-https://user-images.githubusercontent.com/110158529/224958053-6871b432-65fa-4968-8f55-f24d4b2886a1.mov
+https://user-images.githubusercontent.com/110158529/224958053-6871b432-65fa-4968-8f55-f24d4b2886a1.mov<br>
 
- 주문 확인하기.
+<h3>주문 확인하기. </h3>
 
-https://user-images.githubusercontent.com/110158529/224957147-09268d85-a1a2-48e6-97d2-945f788ffd14.mov
+https://user-images.githubusercontent.com/110158529/224957147-09268d85-a1a2-48e6-97d2-945f788ffd14.mov<br>
 
- 선택 삭제하기.
+ <h3>선택 삭제하기.</h3>
 
-https://user-images.githubusercontent.com/110158529/224963700-d763c92b-586c-4aa1-b4ee-d3c7c1e87bc8.mov
+https://user-images.githubusercontent.com/110158529/224963700-d763c92b-586c-4aa1-b4ee-d3c7c1e87bc8.mov<br>
 
  
 
