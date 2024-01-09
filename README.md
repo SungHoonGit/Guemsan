@@ -10,14 +10,10 @@ CRM은 고객 관계 관리를 의미합니다. CRM 시스템을 사용하면 �
  
  https://velog.io/@kims_history/간단-프로젝트-만들기
  
-  
  cafe24를 이용하여 호스팅
  
-<strong> http://ksa134652.cafe24.com/ </strong>
- 
-홈페이지 로그인 이후 서비스 페이지에서 기능을 확인하실수 있습니다.
-id : webmaster 
-pw : 12341234 
+ 만료됌 
+
  
  Compoments 목록에 기본 CRUD 페이지 검색 기능을 사용하였습니다.
  
