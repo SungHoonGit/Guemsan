@@ -170,12 +170,12 @@ new StickyNavigation();
 			</div>			
 			<div class="col-sm-4">
 				<div class="widget">
-					<h5>이메일 : ksa134652@gmail.com </h5>
+					<h5>E-mail : ksa134652@gmail.com </h5>
 				</div>
 			</div>
 			<div class="col-sm-4">
 				<div class="widget">
-					<h5>주소 : 충남 금산군 금삽은 약초리 50</h5>
+					<h5>Address : Guemsan</h5>
 				</div>
 			</div>
 		</div>
